@@ -28,10 +28,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
+  <name>Yildiz Common Mapping</name>
+  <description>Common Mapping library for the yildiz project, contains utilities to map model.</description>
+  <url>https://bitbucket.org/yildiz-engine-team/common-mapping</url>
 
   <artifactId>common-mapping</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
+  <packaging>jar</packaging>
+  <inceptionYear>2017</inceptionYear>
+  <scm>
+    <connection>scm:git:https://bitbucket.org/yildiz-engine-team/common-mapping</connection>
+    <developerConnection>scm:git:https://bitbucket.org/yildiz-engine-team/common-mapping</developerConnection>
+    <url>https://bitbucket.org/yildiz-engine-team/common-mapping</url>
+  </scm>
   <parent>
     <artifactId>parent</artifactId>
     <groupId>be.yildiz-games</groupId>
