@@ -24,7 +24,8 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildiz.common.collections.Lists;
+
+import be.yildizgames.common.collection.Lists;
 
 import java.util.Collection;
 import java.util.Collections;
