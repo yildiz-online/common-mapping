@@ -24,7 +24,7 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildiz.common.id.PlayerId;
+import be.yildizgames.common.model.PlayerId;
 
 /**
  * @author Grégory Van den Borre
