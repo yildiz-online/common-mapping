@@ -25,8 +25,7 @@
 package be.yildizgames.common.mapping;
 
 
-import be.yildizgames.common.collection.Lists;
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -51,7 +50,7 @@ public class CollectionMapper<T> implements ObjectMapper<Collection<T>> {
             return Collections.emptyList();
         }
         String[] values = s.split(Separator.COLLECTION_SEPARATOR);
-        List<T> result = Lists.newList(values.length);
+        List<T> result = new ArrayList<>(values.length);
         for(String value : values) {
             result.add(this.mapper.from(value));
         }
@@ -61,7 +60,7 @@ public class CollectionMapper<T> implements ObjectMapper<Collection<T>> {
     @Override
     public final String to(Collection<T> collection) {
         assert collection != null;
-        final List<T> l = Lists.newList(collection);
+        final List<T> l = new ArrayList<>(collection);
         final StringBuilder sb = new StringBuilder();
         for (T t : l) {
             sb.append(this.mapper.to(t));
