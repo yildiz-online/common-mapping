@@ -24,6 +24,9 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
+import be.yildizgames.common.mapping.exception.MappingException;
+
 /**
  * @author Grégory Van den Borre
  */
@@ -40,8 +43,8 @@ public class FloatMapper implements ObjectMapper<Float> {
     }
 
     @Override
-    public Float from(String s) throws MappingException {
-        assert s != null;
+    public Float from(String s) {
+        ImplementationException.throwForNull(s);
         try {
             return Float.valueOf(s);
         } catch (NumberFormatException e) {
@@ -51,7 +54,7 @@ public class FloatMapper implements ObjectMapper<Float> {
 
     @Override
     public String to(Float f) {
-        assert f != null;
+        ImplementationException.throwForNull(f);
         return String.valueOf(f);
     }
 }

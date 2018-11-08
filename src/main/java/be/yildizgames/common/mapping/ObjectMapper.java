@@ -29,7 +29,7 @@ package be.yildizgames.common.mapping;
  */
 public interface ObjectMapper<T> {
 
-    T from(String s) throws MappingException;
+    T from(String s);
 
     String to(T t);
 }

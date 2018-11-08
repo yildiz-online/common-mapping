@@ -22,22 +22,24 @@
  *
  */
 
-package be.yildizgames.common.mapping;
+package be.yildizgames.common.mapping.exception;
+
+import be.yildizgames.common.exception.business.BusinessException;
 
 /**
  * @author Grégory Van den Borre
  */
-public class MappingException extends Exception {
+public class MappingException extends BusinessException {
 
     public MappingException(String m) {
         super(m);
     }
 
-    public MappingException(String m, Throwable e) {
+    public MappingException(String m, Exception e) {
         super(m, e);
     }
 
-    public MappingException(Throwable e) {
+    public MappingException(Exception e) {
         super(e);
     }
 }

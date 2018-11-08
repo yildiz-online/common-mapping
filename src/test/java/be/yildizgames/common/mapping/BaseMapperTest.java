@@ -24,6 +24,7 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.mapping.exception.MappingException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +50,7 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    void tooShort() throws MappingException {
+    void tooShort() {
         String to = mapper.to(baseObject);
         if (to.contains(Separator.OBJECTS_SEPARATOR)) {
             Assertions.assertThrows(MappingException.class, () -> mapper.from(to.substring(0, to.indexOf(Separator.OBJECTS_SEPARATOR))));
@@ -61,7 +62,7 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    void fromNull() throws MappingException {
+    void fromNull() {
         Assertions.assertThrows(AssertionError.class, () -> mapper.from(null));
     }
 

@@ -24,5 +24,7 @@
 
 module be.yildizgames.common.mapping {
 
+    requires be.yildizgames.common.exception;
+
     exports be.yildizgames.common.mapping;
 }

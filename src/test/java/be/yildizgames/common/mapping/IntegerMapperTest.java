@@ -24,6 +24,8 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
+import be.yildizgames.common.mapping.exception.MappingException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +63,7 @@ class IntegerMapperTest {
 
         @Test
         void withNull() throws MappingException {
-            assertThrows(AssertionError.class, () -> IntegerMapper.getInstance().from(null));
+            assertThrows(ImplementationException.class, () -> IntegerMapper.getInstance().from(null));
         }
     }
 
@@ -75,7 +77,7 @@ class IntegerMapperTest {
 
         @Test
         void withNull() {
-            assertThrows(AssertionError.class, () -> IntegerMapper.getInstance().to(null));
+            assertThrows(ImplementationException.class, () -> IntegerMapper.getInstance().to(null));
         }
     }
 

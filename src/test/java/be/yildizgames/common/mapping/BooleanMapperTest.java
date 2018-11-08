@@ -24,12 +24,16 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
+import be.yildizgames.common.mapping.exception.MappingException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Grégory Van den Borre
@@ -52,23 +56,23 @@ class BooleanMapperTest {
         @Test
         void happyFlow() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("t");
-            assertEquals(true, v);
+            assertTrue(v);
         }
 
         @Test
         void happyFlowFalse() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("f");
-            assertEquals(false, v);
+            assertFalse(v);
         }
 
         @Test
-        void invalidValue() throws MappingException {
+        void invalidValue() {
             assertThrows(MappingException.class, () -> BooleanMapper.getInstance().from("a"));
         }
 
         @Test
-        void withNull() throws MappingException {
-            assertThrows(AssertionError.class, () -> BooleanMapper.getInstance().from(null));
+        void withNull() {
+            assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().from(null));
         }
     }
 
@@ -87,7 +91,7 @@ class BooleanMapperTest {
 
         @Test
         void withNull() {
-            assertThrows(AssertionError.class, () -> BooleanMapper.getInstance().to(null));
+            assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().to(null));
         }
     }
 

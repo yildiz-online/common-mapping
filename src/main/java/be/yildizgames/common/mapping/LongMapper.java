@@ -24,6 +24,9 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
+import be.yildizgames.common.mapping.exception.MappingException;
+
 /**
  * @author Grégory Van den Borre
  */
@@ -40,8 +43,8 @@ public class LongMapper implements ObjectMapper<Long>{
     }
 
     @Override
-    public Long from(String s) throws MappingException {
-        assert s!= null;
+    public Long from(String s) {
+        ImplementationException.throwForNull(s);
         try {
             return Long.valueOf(s);
         } catch (NumberFormatException e) {
@@ -51,7 +54,7 @@ public class LongMapper implements ObjectMapper<Long>{
 
     @Override
     public String to(Long l) {
-        assert l != null;
+        ImplementationException.throwForNull(l);
         return String.valueOf(l);
     }
 }
