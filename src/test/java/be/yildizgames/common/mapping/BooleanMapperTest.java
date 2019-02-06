@@ -39,58 +39,58 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Grégory Van den Borre
  */
 
-class BooleanMapperTest {
+public class BooleanMapperTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertNotNull(BooleanMapper.getInstance());
         }
     }
 
     @Nested
-    class From {
+    public class From {
 
         @Test
-        void happyFlow() throws MappingException {
+        public void happyFlow() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("t");
             assertTrue(v);
         }
 
         @Test
-        void happyFlowFalse() throws MappingException {
+        public void happyFlowFalse() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("f");
             assertFalse(v);
         }
 
         @Test
-        void invalidValue() {
+        public void invalidValue() {
             assertThrows(MappingException.class, () -> BooleanMapper.getInstance().from("a"));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().from(null));
         }
     }
 
     @Nested
-    class To {
+    public class To {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertEquals("t", BooleanMapper.getInstance().to(true));
         }
 
         @Test
-        void happyFlowFalse() {
+        public void happyFlowFalse() {
             assertEquals("f", BooleanMapper.getInstance().to(false));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().to(null));
         }
     }

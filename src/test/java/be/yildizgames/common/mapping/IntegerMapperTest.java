@@ -36,47 +36,47 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class IntegerMapperTest {
+public class IntegerMapperTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertNotNull(IntegerMapper.getInstance());
         }
     }
 
     @Nested
-    class From {
+    public class From {
 
         @Test
-        void happyFlow() throws MappingException {
+        public void happyFlow() throws MappingException {
             int v = IntegerMapper.getInstance().from("5");
             assertEquals(5, v);
         }
 
         @Test
-        void invalidValue() throws MappingException {
+        public void invalidValue() throws MappingException {
             assertThrows(MappingException.class, () -> IntegerMapper.getInstance().from("a"));
         }
 
         @Test
-        void withNull() throws MappingException {
+        public void withNull() throws MappingException {
             assertThrows(ImplementationException.class, () -> IntegerMapper.getInstance().from(null));
         }
     }
 
     @Nested
-    class To {
+    public class To {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertEquals("5", IntegerMapper.getInstance().to(5));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> IntegerMapper.getInstance().to(null));
         }
     }
