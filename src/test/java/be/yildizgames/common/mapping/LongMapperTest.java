@@ -1,9 +1,9 @@
 /*
  * This file is part of the Yildiz-Engine project, licenced under the MIT License  (MIT)
  *
- *  Copyright (c) 2018 Grégory Van den Borre
+ *  Copyright (c) 2019 Grégory Van den Borre
  *
- *  More infos available: https://www.yildiz-games.be
+ *  More infos available: https://engine.yildiz-games.be
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  *  documentation files (the "Software"), to deal in the Software without restriction, including without
@@ -36,47 +36,47 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class LongMapperTest {
+public class LongMapperTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertNotNull(LongMapper.getInstance());
         }
     }
 
     @Nested
-    class From {
+    public class From {
 
         @Test
-        void happyFlow() throws MappingException {
+        public void happyFlow() throws MappingException {
             long v = LongMapper.getInstance().from("5");
             assertEquals(5, v);
         }
 
         @Test
-        void invalidValue() throws MappingException {
+        public void invalidValue() throws MappingException {
             assertThrows(MappingException.class, () -> LongMapper.getInstance().from("a"));
         }
 
         @Test
-        void withNull() throws MappingException {
+        public void withNull() throws MappingException {
             assertThrows(ImplementationException.class, () -> LongMapper.getInstance().from(null));
         }
     }
 
     @Nested
-    class To {
+    public class To {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertEquals("5", LongMapper.getInstance().to(5L));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> LongMapper.getInstance().to(null));
         }
     }

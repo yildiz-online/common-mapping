@@ -1,9 +1,9 @@
 /*
  * This file is part of the Yildiz-Engine project, licenced under the MIT License  (MIT)
  *
- *  Copyright (c) 2018 Grégory Van den Borre
+ *  Copyright (c) 2019 Grégory Van den Borre
  *
- *  More infos available: https://www.yildiz-games.be
+ *  More infos available: https://engine.yildiz-games.be
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  *  documentation files (the "Software"), to deal in the Software without restriction, including without
@@ -39,58 +39,58 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Grégory Van den Borre
  */
 
-class BooleanMapperTest {
+public class BooleanMapperTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertNotNull(BooleanMapper.getInstance());
         }
     }
 
     @Nested
-    class From {
+    public class From {
 
         @Test
-        void happyFlow() throws MappingException {
+        public void happyFlow() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("t");
             assertTrue(v);
         }
 
         @Test
-        void happyFlowFalse() throws MappingException {
+        public void happyFlowFalse() throws MappingException {
             boolean v = BooleanMapper.getInstance().from("f");
             assertFalse(v);
         }
 
         @Test
-        void invalidValue() {
+        public void invalidValue() {
             assertThrows(MappingException.class, () -> BooleanMapper.getInstance().from("a"));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().from(null));
         }
     }
 
     @Nested
-    class To {
+    public class To {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             assertEquals("t", BooleanMapper.getInstance().to(true));
         }
 
         @Test
-        void happyFlowFalse() {
+        public void happyFlowFalse() {
             assertEquals("f", BooleanMapper.getInstance().to(false));
         }
 
         @Test
-        void withNull() {
+        public void withNull() {
             assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().to(null));
         }
     }

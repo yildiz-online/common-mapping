@@ -1,9 +1,9 @@
 /*
  * This file is part of the Yildiz-Engine project, licenced under the MIT License  (MIT)
  *
- *  Copyright (c) 2018 Grégory Van den Borre
+ *  Copyright (c) 2019 Grégory Van den Borre
  *
- *  More infos available: https://www.yildiz-games.be
+ *  More infos available: https://engine.yildiz-games.be
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  *  documentation files (the "Software"), to deal in the Software without restriction, including without
@@ -43,14 +43,14 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    void happyFlow() throws MappingException {
+    public void happyFlow() throws MappingException {
         String to = mapper.to(baseObject);
         T from = mapper.from(to);
         Assertions.assertEquals(baseObject, from);
     }
 
     @Test
-    void tooShort() {
+    public void tooShort() {
         String to = mapper.to(baseObject);
         if (to.contains(Separator.OBJECTS_SEPARATOR)) {
             Assertions.assertThrows(MappingException.class, () -> mapper.from(to.substring(0, to.indexOf(Separator.OBJECTS_SEPARATOR))));
@@ -62,12 +62,12 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    void fromNull() {
+    public void fromNull() {
         Assertions.assertThrows(AssertionError.class, () -> mapper.from(null));
     }
 
     @Test
-    void toNull() {
+    public void toNull() {
         Assertions.assertThrows(AssertionError.class, () -> mapper.to(null));
     }
 
