@@ -43,7 +43,7 @@ public class IntegerMapper implements ObjectMapper<Integer> {
     }
 
     @Override
-    public Integer from(String s) {
+    public final Integer from(String s) {
         ImplementationException.throwForNull(s);
         try {
             return Integer.valueOf(s);
@@ -53,7 +53,7 @@ public class IntegerMapper implements ObjectMapper<Integer> {
     }
 
     @Override
-    public String to(Integer integer) {
+    public final String to(Integer integer) {
         ImplementationException.throwForNull(integer);
         return String.valueOf(integer);
     }

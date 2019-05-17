@@ -43,7 +43,7 @@ public class LongMapper implements ObjectMapper<Long>{
     }
 
     @Override
-    public Long from(String s) {
+    public final Long from(String s) {
         ImplementationException.throwForNull(s);
         try {
             return Long.valueOf(s);
@@ -53,7 +53,7 @@ public class LongMapper implements ObjectMapper<Long>{
     }
 
     @Override
-    public String to(Long l) {
+    public final String to(Long l) {
         ImplementationException.throwForNull(l);
         return String.valueOf(l);
     }

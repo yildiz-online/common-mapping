@@ -42,4 +42,5 @@ public class MappingException extends BusinessException {
     public MappingException(Exception e) {
         super(e);
     }
+
 }

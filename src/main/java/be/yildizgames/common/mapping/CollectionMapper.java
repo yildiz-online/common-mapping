@@ -26,7 +26,6 @@ package be.yildizgames.common.mapping;
 
 
 import be.yildizgames.common.exception.implementation.ImplementationException;
-import be.yildizgames.common.mapping.exception.MappingException;
 
 import java.util.ArrayList;
 import java.util.Collection;

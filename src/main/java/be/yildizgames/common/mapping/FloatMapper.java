@@ -43,7 +43,7 @@ public class FloatMapper implements ObjectMapper<Float> {
     }
 
     @Override
-    public Float from(String s) {
+    public final Float from(String s) {
         ImplementationException.throwForNull(s);
         try {
             return Float.valueOf(s);
@@ -53,7 +53,7 @@ public class FloatMapper implements ObjectMapper<Float> {
     }
 
     @Override
-    public String to(Float f) {
+    public final String to(Float f) {
         ImplementationException.throwForNull(f);
         return String.valueOf(f);
     }

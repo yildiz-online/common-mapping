@@ -80,5 +80,4 @@ public class IntegerMapperTest {
             assertThrows(ImplementationException.class, () -> IntegerMapper.getInstance().to(null));
         }
     }
-
 }

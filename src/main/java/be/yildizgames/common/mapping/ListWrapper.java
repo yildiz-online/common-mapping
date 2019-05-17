@@ -32,4 +32,5 @@ import java.util.List;
 public interface ListWrapper <T> {
 
     List<T> getList();
+
 }
