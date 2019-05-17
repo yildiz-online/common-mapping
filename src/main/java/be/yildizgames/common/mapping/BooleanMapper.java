@@ -43,7 +43,7 @@ public class BooleanMapper implements ObjectMapper<Boolean>{
     }
 
     @Override
-    public Boolean from(String s) {
+    public final Boolean from(String s) {
         ImplementationException.throwForNull(s);
         if(s.equals("t")) {
             return true;
@@ -54,7 +54,7 @@ public class BooleanMapper implements ObjectMapper<Boolean>{
     }
 
     @Override
-    public String to(Boolean b) {
+    public final String to(Boolean b) {
         ImplementationException.throwForNull(b);
         return b ? "t" : "f";
     }

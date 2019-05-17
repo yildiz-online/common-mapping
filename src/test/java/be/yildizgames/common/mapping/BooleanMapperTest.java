@@ -94,5 +94,4 @@ public class BooleanMapperTest {
             assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().to(null));
         }
     }
-
 }
