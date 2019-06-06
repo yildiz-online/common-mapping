@@ -24,7 +24,6 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.exception.MappingException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -72,7 +71,7 @@ public class BooleanMapperTest {
 
         @Test
         public void withNull() {
-            assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().from(null));
+            assertThrows(NullPointerException.class, () -> BooleanMapper.getInstance().from(null));
         }
     }
 
@@ -91,7 +90,7 @@ public class BooleanMapperTest {
 
         @Test
         public void withNull() {
-            assertThrows(ImplementationException.class, () -> BooleanMapper.getInstance().to(null));
+            assertThrows(NullPointerException.class, () -> BooleanMapper.getInstance().to(null));
         }
     }
 }
