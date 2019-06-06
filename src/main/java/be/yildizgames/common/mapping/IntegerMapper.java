@@ -24,8 +24,9 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.exception.MappingException;
+
+import java.util.Objects;
 
 /**
  * @author Grégory Van den Borre
@@ -44,7 +45,7 @@ public class IntegerMapper implements ObjectMapper<Integer> {
 
     @Override
     public final Integer from(String s) {
-        ImplementationException.throwForNull(s);
+        Objects.requireNonNull(s);
         try {
             return Integer.valueOf(s);
         } catch (NumberFormatException e) {
@@ -54,7 +55,7 @@ public class IntegerMapper implements ObjectMapper<Integer> {
 
     @Override
     public final String to(Integer integer) {
-        ImplementationException.throwForNull(integer);
+        Objects.requireNonNull(integer);
         return String.valueOf(integer);
     }
 }

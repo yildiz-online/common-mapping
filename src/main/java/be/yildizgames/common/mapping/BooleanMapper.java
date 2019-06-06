@@ -24,7 +24,6 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.exception.MappingException;
 
 /**
@@ -44,7 +43,6 @@ public class BooleanMapper implements ObjectMapper<Boolean>{
 
     @Override
     public final Boolean from(String s) {
-        ImplementationException.throwForNull(s);
         if(s.equals("t")) {
             return true;
         } else if(s.equals("f")) {
@@ -55,7 +53,6 @@ public class BooleanMapper implements ObjectMapper<Boolean>{
 
     @Override
     public final String to(Boolean b) {
-        ImplementationException.throwForNull(b);
         return b ? "t" : "f";
     }
 }
