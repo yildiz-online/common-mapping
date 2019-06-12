@@ -24,8 +24,6 @@
 
 module be.yildizgames.common.mapping {
 
-    requires be.yildizgames.common.exception;
-
     exports be.yildizgames.common.mapping;
     exports be.yildizgames.common.mapping.exception to be.yildizgames.common.mapping.model, be.yildizgames.common.mapping.geometry;
 }

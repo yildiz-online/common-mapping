@@ -24,7 +24,6 @@
 
 package be.yildizgames.common.mapping;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.exception.MappingException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -63,7 +62,7 @@ public class LongMapperTest {
 
         @Test
         public void withNull() throws MappingException {
-            assertThrows(ImplementationException.class, () -> LongMapper.getInstance().from(null));
+            assertThrows(NullPointerException.class, () -> LongMapper.getInstance().from(null));
         }
     }
 
@@ -77,7 +76,7 @@ public class LongMapperTest {
 
         @Test
         public void withNull() {
-            assertThrows(ImplementationException.class, () -> LongMapper.getInstance().to(null));
+            assertThrows(NullPointerException.class, () -> LongMapper.getInstance().to(null));
         }
     }
 

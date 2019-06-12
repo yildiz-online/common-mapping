@@ -24,12 +24,10 @@
 
 package be.yildizgames.common.mapping.exception;
 
-import be.yildizgames.common.exception.business.BusinessException;
-
 /**
  * @author Grégory Van den Borre
  */
-public class MappingException extends BusinessException {
+public class MappingException extends IllegalArgumentException {
 
     public MappingException(String m) {
         super(m);
@@ -42,4 +40,5 @@ public class MappingException extends BusinessException {
     public MappingException(Exception e) {
         super(e);
     }
+
 }

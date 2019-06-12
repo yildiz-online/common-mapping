@@ -43,4 +43,5 @@ public class Separator {
      * Separator between different objects of a message.
      */
     public static final String OBJECTS_SEPARATOR = "@@";
+
 }

@@ -32,4 +32,5 @@ public interface ObjectMapper<T> {
     T from(String s);
 
     String to(T t);
+
 }

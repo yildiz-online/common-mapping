@@ -25,13 +25,11 @@
 package be.yildizgames.common.mapping;
 
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
-import be.yildizgames.common.mapping.exception.MappingException;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class must be sub-classed
@@ -48,7 +46,6 @@ public class CollectionMapper<T> implements ObjectMapper<Collection<T>> {
 
     @Override
     public final Collection<T> from(String s) {
-        ImplementationException.throwForNull(s);
         if(s.isEmpty()) {
             return Collections.emptyList();
         }
@@ -62,7 +59,7 @@ public class CollectionMapper<T> implements ObjectMapper<Collection<T>> {
 
     @Override
     public final String to(Collection<T> collection) {
-        ImplementationException.throwForNull(collection);
+        Objects.requireNonNull(collection);
         final List<T> l = new ArrayList<>(collection);
         final StringBuilder sb = new StringBuilder();
         for (T t : l) {
