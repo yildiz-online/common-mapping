@@ -24,52 +24,59 @@
 
 package be.yildizgames.common.mapping;
 
+import be.yildizgames.common.mapping.exception.MappingException;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * This class must be sub-classed
  * @author Grégory Van den Borre
  */
-public class CollectionMapper<T> implements ObjectMapper<Collection<T>> {
+public class FloatMapperTest {
 
-    private final ObjectMapper<T> mapper;
+    @Nested
+    public class Constructor {
 
-    public CollectionMapper(ObjectMapper<T> mapper) {
-        super();
-        Objects.requireNonNull(mapper);
-        this.mapper = mapper;
+        @Test
+        public void happyFlow() {
+            assertNotNull(FloatMapper.getInstance());
+        }
     }
 
-    @Override
-    public final Collection<T> from(String s) {
-        if(s.isEmpty()) {
-            return Collections.emptyList();
+    @Nested
+    public class From {
+
+        @Test
+        public void happyFlow() throws MappingException {
+            float v = FloatMapper.getInstance().from("5");
+            assertEquals(5, v);
         }
-        String[] values = s.split(Separator.COLLECTION_SEPARATOR);
-        List<T> result = new ArrayList<>(values.length);
-        for(String value : values) {
-            result.add(this.mapper.from(value));
+
+        @Test
+        public void invalidValue() throws MappingException {
+            assertThrows(MappingException.class, () -> FloatMapper.getInstance().from("a"));
         }
-        return result;
+
+        @Test
+        public void withNull() throws MappingException {
+            assertThrows(NullPointerException.class, () -> FloatMapper.getInstance().from(null));
+        }
     }
 
-    @Override
-    public final String to(Collection<T> collection) {
-        Objects.requireNonNull(collection);
-        final List<T> l = new ArrayList<>(collection);
-        final StringBuilder sb = new StringBuilder();
-        for (T t : l) {
-            sb.append(this.mapper.to(t));
-            sb.append(Separator.COLLECTION_SEPARATOR);
+    @Nested
+    public class To {
+
+        @Test
+        public void happyFlow() {
+            assertEquals("5.0", FloatMapper.getInstance().to(5f));
         }
-        if (sb.charAt(sb.length() - 1) == Separator.COLLECTION_SEPARATOR.charAt(0)) {
-            sb.deleteCharAt(sb.length() - 1);
+
+        @Test
+        public void withNull() {
+            assertThrows(NullPointerException.class, () -> FloatMapper.getInstance().to(null));
         }
-        return sb.toString();
     }
 }
