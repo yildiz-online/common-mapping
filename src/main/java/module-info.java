@@ -22,7 +22,7 @@
  *
  */
 
-module be.yildizgames.common.mapping {
+open module be.yildizgames.common.mapping {
 
     exports be.yildizgames.common.mapping;
     exports be.yildizgames.common.mapping.exception to be.yildizgames.common.mapping.model, be.yildizgames.common.mapping.geometry;

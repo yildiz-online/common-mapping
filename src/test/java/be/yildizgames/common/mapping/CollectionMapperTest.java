@@ -40,27 +40,27 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public class CollectionMapperTest {
+class CollectionMapperTest {
 
     @Nested
-    public class Constructor {
+    class Constructor {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             assertNotNull(new CollectionMapper<Float>(FloatMapper.getInstance()));
         }
 
         @Test
-        public void nullParameter() {
+        void nullParameter() {
             assertThrows(NullPointerException.class, () -> new CollectionMapper<Float>(null));
         }
     }
 
     @Nested
-    public class From {
+    class From {
 
         @Test
-        public void happyFlow() throws MappingException {
+        void happyFlow() throws MappingException {
             CollectionMapper<Integer> mapper = new CollectionMapper<>(IntegerMapper.getInstance());
             Collection<Integer> ints = mapper.from("5,2,3");
             assertEquals(3, ints.size());
@@ -71,28 +71,28 @@ public class CollectionMapperTest {
         }
 
         @Test
-        public void invalidValue() throws MappingException {
+        void invalidValue() throws MappingException {
             CollectionMapper<Integer> mapper = new CollectionMapper<>(IntegerMapper.getInstance());
             Assertions.assertThrows(MappingException.class, () -> mapper.from("5a,2,3"));
         }
 
         @Test
-        public void withNull() throws MappingException {
+        void withNull() throws MappingException {
             assertThrows(NullPointerException.class, () -> FloatMapper.getInstance().from(null));
         }
     }
 
     @Nested
-    public class To {
+    class To {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollectionMapper<Float> mapper = new CollectionMapper<>(FloatMapper.getInstance());
             assertEquals("5.0,2.0,3.0", mapper.to(List.of(5f, 2f, 3f)));
         }
 
         @Test
-        public void withNull() {
+        void withNull() {
             assertThrows(NullPointerException.class, () -> FloatMapper.getInstance().to(null));
         }
     }

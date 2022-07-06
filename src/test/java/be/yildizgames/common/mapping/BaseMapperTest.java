@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Grégory Van den Borre
  */
-public abstract class BaseMapperTest <T>{
+abstract class BaseMapperTest<T> {
 
     private final ObjectMapper<T> mapper;
 
@@ -44,14 +44,14 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    public void happyFlow() throws MappingException {
+    void happyFlow() throws MappingException {
         String to = mapper.to(baseObject);
         T from = mapper.from(to);
         Assertions.assertEquals(baseObject, from);
     }
 
     @Test
-    public void tooShort() {
+    void tooShort() {
         String to = mapper.to(baseObject);
         if (to.contains(Separator.OBJECTS_SEPARATOR)) {
             Assertions.assertThrows(MappingException.class, () -> mapper.from(to.substring(0, to.indexOf(Separator.OBJECTS_SEPARATOR))));
@@ -63,12 +63,12 @@ public abstract class BaseMapperTest <T>{
     }
 
     @Test
-    public void fromNull() {
+    void fromNull() {
         Assertions.assertThrows(AssertionError.class, () -> mapper.from(null));
     }
 
     @Test
-    public void toNull() {
+    void toNull() {
         Assertions.assertThrows(AssertionError.class, () -> mapper.to(null));
     }
 
